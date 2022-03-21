@@ -1,0 +1,11 @@
+name: Waiting
+
+on:
+  workflow_call:
+
+jobs:
+  hw:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Hello World"
+    - run: sleep 60
