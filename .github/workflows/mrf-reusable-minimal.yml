@@ -1,0 +1,16 @@
+name: MRF Reusable Minimal
+
+on:
+  workflow_call:
+    inputs:
+      runson:
+        type: string
+      env:
+        type: string
+
+jobs:
+  printenv:
+    runs-on: ${{ inputs.runson }}
+    steps:
+    - name: Print Environment input
+      run: echo ${{ inputs.env }}
