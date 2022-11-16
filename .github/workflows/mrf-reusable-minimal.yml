@@ -11,6 +11,7 @@ on:
 jobs:
   printenv:
     runs-on: ${{ inputs.runson }}
+    environment: ${{ inputs.env }}
     steps:
     - name: Print Environment input
       run: echo ${{ inputs.env }}
