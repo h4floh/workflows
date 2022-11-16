@@ -1,0 +1,20 @@
+name: MRF Scenario Minimal
+
+on:
+  push:
+    paths:
+      - '**/sanity-runs.md'
+  workflow_dispatch:
+
+jobs:
+  MatrixReusableWorkflow:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        runson: [ubuntu-latest]
+        env: [dev, prod]
+    uses: ./.github/workflows/mrf-reusable-minimal.yml
+    with:
+      runson: ${{ matrix.runson }}
+      env: ${{ matrix.env }}
