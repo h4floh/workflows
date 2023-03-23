@@ -20,3 +20,6 @@ jobs:
         ${{ toJSON(secrets) }}
         END
       name: secrets content
+    - run: |
+        if [[ ${{ workflow_secrets.test_secret }} != '' ]]; then exit -1; fi 
+      name: if this fails workflow_secret has a value which it shouldn't
