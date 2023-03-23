@@ -1,0 +1,22 @@
+name: Testing Reusable Workflow Secrets
+
+on:
+  workflow_call:
+
+jobs:
+  public_reusable:
+    name: normal
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ${{ workflow_secrets.test_secret }} | rev
+      name: using DEPLOY from 'workflow_secrets' context
+    - run: |
+        cat <<'END'
+        ${{ toJSON(workflow_secrets) }}
+        END
+      name: workflow_secrets content
+    - run: |
+        cat <<'END'
+        ${{ toJSON(secrets) }}
+        END
+      name: secrets content
